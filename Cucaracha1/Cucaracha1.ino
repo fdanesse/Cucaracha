@@ -41,7 +41,7 @@ void setup(){
   //Serial.println(MIN_I); Serial.println(MAX_I);
   //Serial.println(UP_I); Serial.println(DOWN_I);Serial.println(APOYO_I);
   posInicial();
-  //command = "avanzar";
+  command = "avanzar";
 }
   
 void changePosition(Servo *servo, int val){
@@ -69,13 +69,14 @@ void loop(){
     }
   if (command == "avanzar") {direccion = 1; set_Pos_Caminar(); command = "caminando";}
   else if (command == "retroceder") {direccion = 2; set_Pos_Caminar(); command = "caminando";}
-  else if (command == "inicial") {posInicial();}//command = "stop";}
-  else if (command == "delante") {todo_adelante();}//command = "stop";}
-  else if (command == "atras") {todo_atras();}//command = "stop";}
-  else if (command == "arriba") {todo_arriba();}//command = "stop";}
-  else if (command == "abajo") {todo_abajo();}//command = "stop";}
-  else if (command == "apoyo") {todo_apoyado();}//command = "stop";}
-  else if (command == "poscaminar") {direccion = 1; set_Pos_Caminar();}//command = "stop";}
+  
+  else if (command == "inicial") {posInicial();}
+  else if (command == "delante") {todo_adelante();command = "stop";}
+  else if (command == "atras") {todo_atras();command = "stop";}
+  else if (command == "arriba") {todo_arriba();command = "stop";}
+  else if (command == "abajo") {todo_abajo();command = "stop";}
+  else if (command == "apoyo") {todo_apoyado();command = "stop";}
+  else if (command == "poscaminar") {direccion = 1; set_Pos_Caminar();command = "stop";}
   else if (command == "caminando") {caminar();}
   else {command = "stop";}
 }
